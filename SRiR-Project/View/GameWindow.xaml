@@ -1,0 +1,106 @@
+﻿<Window x:Class="SRiR_Project.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gra w statki" Height="450" Width="1000">
+
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <GridSplitter Margin="0,0,199.6,0" Width="10"/>
+        <TextBox x:Name="GameInfo" HorizontalAlignment="Left" Height="286" Margin="804,74,0,0" TextWrapping="Wrap" Text="InfoText" VerticalAlignment="Top" Width="180"  IsManipulationEnabled="False"/>
+
+        <ItemsControl ItemsSource="{Binding MyFields}" Margin="26,57,0,-5" HorizontalAlignment="Left" Width="390" Height="368" VerticalAlignment="Top" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button x:Name="Field"
+                            Width="{Binding Size}" 
+                            Height="{Binding Size}"
+                            Content="{Binding ContentText}" 
+                            BorderBrush="Black"
+                            Background="{Binding Path=Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Foreground="White"
+                            Command="{Binding SelectFieldCommand}"
+                            IsEnabled="{Binding Enabled}"
+                            Style="{StaticResource MyButton}">
+            
+                        <Button.RenderTransform>
+                            <TranslateTransform X="{Binding Left}" Y ="{Binding Top}"  />
+                        </Button.RenderTransform>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
+        <ItemsControl ItemsSource="{Binding EnemyFields}" Margin="444,57,0,-5" HorizontalAlignment="Left" Width="390" Height="368" VerticalAlignment="Top" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Width="{Binding Size}" 
+                            Height="{Binding Size}"
+                            Content="{Binding ContentText}" 
+                            BorderBrush="Black"
+                            Foreground="White"
+                            Background="{Binding Background}"
+                            Command="{Binding SelectFieldCommand}"
+                            IsEnabled="{Binding Enabled}"
+                            Style="{StaticResource MyButton}">
+                        <Button.RenderTransform>
+                            <TranslateTransform X="{Binding Left}" Y ="{Binding Top}"  />
+                        </Button.RenderTransform>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Label Content="Twoje statki" HorizontalAlignment="Left" Height="27" Margin="150,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Statki przeciwnika" HorizontalAlignment="Left" Height="27" Margin="527,10,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="UserInfo" HorizontalAlignment="Left" Height="59" Margin="804,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180" IsManipulationEnabled="False"/>
+        <Label Content="Ilość ruchów" HorizontalAlignment="Left" Height="27" Margin="355,10,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="MoveCount" HorizontalAlignment="Left" Height="52" Margin="365,41,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="57" TextAlignment="Center" FontSize="30"/>
+        <Label x:Name="AvaibleShipsLabel" Content="Dostępne&#x0a;    statki" HorizontalAlignment="Left" Height="52" Margin="363,73,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="AvaibleShips" HorizontalAlignment="Left" Height="306" Margin="367,114,0,0" TextWrapping="Wrap" Text="brak" VerticalAlignment="Top" Width="57" TextAlignment="Center" FontSize="20"/>
+        <Label Content="A        B        C       D        E        F        G        H        I         J" HorizontalAlignment="Left" Height="27" Margin="32,32,0,0" VerticalAlignment="Top" Width="318"/>
+        <Label Content="A        B        C       D        E        F        G        H        I         J" HorizontalAlignment="Left" Height="27" Margin="451,32,0,0" VerticalAlignment="Top" Width="318"/>
+        <Label Content="1" HorizontalAlignment="Left" Height="27" Margin="10,59,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="2" HorizontalAlignment="Left" Height="27" Margin="10,92,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="3" HorizontalAlignment="Left" Height="27" Margin="10,125,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="4" HorizontalAlignment="Left" Height="27" Margin="10,158,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="5" HorizontalAlignment="Left" Height="27" Margin="10,191,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="6" HorizontalAlignment="Left" Height="27" Margin="10,224,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="7" HorizontalAlignment="Left" Height="27" Margin="10,257,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="8" HorizontalAlignment="Left" Height="27" Margin="10,290,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="9" HorizontalAlignment="Left" Height="27" Margin="10,323,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="10" HorizontalAlignment="Left" Height="27" Margin="6,356,0,0" VerticalAlignment="Top" Width="26"/>
+
+        <Label Content="1" HorizontalAlignment="Left" Height="27" Margin="428,59,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="2" HorizontalAlignment="Left" Height="27" Margin="428,92,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="3" HorizontalAlignment="Left" Height="27" Margin="428,125,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="4" HorizontalAlignment="Left" Height="27" Margin="428,158,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="5" HorizontalAlignment="Left" Height="27" Margin="428,191,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="6" HorizontalAlignment="Left" Height="27" Margin="428,224,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="7" HorizontalAlignment="Left" Height="27" Margin="428,257,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="8" HorizontalAlignment="Left" Height="27" Margin="428,290,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="9" HorizontalAlignment="Left" Height="27" Margin="428,323,0,0" VerticalAlignment="Top" Width="22"/>
+        <Label Content="10" HorizontalAlignment="Left" Height="27" Margin="424,356,0,0" VerticalAlignment="Top" Width="26"/>
+
+
+    </Grid>
+</Window>

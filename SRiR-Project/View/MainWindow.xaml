@@ -1,0 +1,14 @@
+﻿<Window x:Class="SRiR_Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gra w statki - menu" Height="350" Width="300">
+    <Grid>
+        <Label Content="Statki" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="274" HorizontalContentAlignment="Center" FontSize="25"/>
+        <Label Content="Pseudonim: " HorizontalAlignment="Left" Height="29" Margin="10,60,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox x:Name="NicknameBox" HorizontalAlignment="Left" Height="20" Margin="92,64,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="CreateServer" Content="Stwórz grę" HorizontalAlignment="Left" Height="49" Margin="10,95,0,0" VerticalAlignment="Top" Width="274" Click="CreateServer_Click"/>
+        <Button x:Name="JoinServer" Content="Dołącz do gry" HorizontalAlignment="Left" Height="49" Margin="10,160,0,0" VerticalAlignment="Top" Width="274" Click="JoinServer_Click"/>
+        <Button x:Name="Exit" Content="Wyjście" HorizontalAlignment="Left" Height="49" Margin="10,262,0,0" VerticalAlignment="Top" Width="274" Click="Exit_Click"/>
+
+    </Grid>
+</Window>
